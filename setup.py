@@ -5,8 +5,10 @@ import sys
 version = '1.14.dev0'
 
 genshi_requirement = 'Genshi'
+jinja2_requirement = 'Jinja2'
 if sys.version_info >= (3,):
     genshi_requirement = 'Genshi>=0.7.0'
+    jinja2_requirement = 'Jinja2>=2.7'
 
 setup(name='collective.recipe.template',
       version=version,
@@ -39,11 +41,13 @@ setup(name='collective.recipe.template',
       extras_require=dict(
         test = ['zope.testing',],
         genshi = [genshi_requirement,],
+        jinja2 = [jinja2_requirement,],
         ),
       entry_points="""
       [zc.buildout]
       default = collective.recipe.template:Recipe
       genshi = collective.recipe.template.genshitemplate:Recipe
+      jinja2 = collective.recipe.template.jinja2template:Recipe
       """,
       use_2to3=True,
       convert_2to3_doctests=[
